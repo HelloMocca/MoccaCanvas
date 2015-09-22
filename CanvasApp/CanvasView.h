@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CanvasView.h
 //  CanvasApp
 //
 //  Created by mocca on 2015. 9. 21..
@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CanvasView.h"
 
-@interface ViewController : UIViewController
+@interface CanvasView : UIView
 
+@property (nonatomic, readonly) NSMutableArray *points;
 
 @end
-

@@ -14,6 +14,9 @@
 		C44D9D4F1BAFDBF0004F6DD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C44D9D4E1BAFDBF0004F6DD5 /* Images.xcassets */; };
 		C44D9D521BAFDBF0004F6DD5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C44D9D501BAFDBF0004F6DD5 /* LaunchScreen.xib */; };
 		C44D9D5E1BAFDBF0004F6DD5 /* CanvasAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C44D9D5D1BAFDBF0004F6DD5 /* CanvasAppTests.m */; };
+		C44D9D691BAFDD05004F6DD5 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44D9D681BAFDD05004F6DD5 /* CanvasView.m */; };
+		C44D9D6C1BB0F162004F6DD5 /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = C44D9D6B1BB0F162004F6DD5 /* Shape.m */; };
+		C44D9D781BB0F726004F6DD5 /* MCPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = C44D9D771BB0F726004F6DD5 /* MCPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,12 @@
 		C44D9D571BAFDBF0004F6DD5 /* CanvasAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanvasAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44D9D5C1BAFDBF0004F6DD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C44D9D5D1BAFDBF0004F6DD5 /* CanvasAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CanvasAppTests.m; sourceTree = "<group>"; };
+		C44D9D671BAFDD05004F6DD5 /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
+		C44D9D681BAFDD05004F6DD5 /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
+		C44D9D6A1BB0F162004F6DD5 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shape.h; sourceTree = "<group>"; };
+		C44D9D6B1BB0F162004F6DD5 /* Shape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shape.m; sourceTree = "<group>"; };
+		C44D9D761BB0F726004F6DD5 /* MCPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPoint.h; sourceTree = "<group>"; };
+		C44D9D771BB0F726004F6DD5 /* MCPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +98,12 @@
 				C44D9D4E1BAFDBF0004F6DD5 /* Images.xcassets */,
 				C44D9D501BAFDBF0004F6DD5 /* LaunchScreen.xib */,
 				C44D9D411BAFDBF0004F6DD5 /* Supporting Files */,
+				C44D9D671BAFDD05004F6DD5 /* CanvasView.h */,
+				C44D9D681BAFDD05004F6DD5 /* CanvasView.m */,
+				C44D9D6A1BB0F162004F6DD5 /* Shape.h */,
+				C44D9D6B1BB0F162004F6DD5 /* Shape.m */,
+				C44D9D761BB0F726004F6DD5 /* MCPoint.h */,
+				C44D9D771BB0F726004F6DD5 /* MCPoint.m */,
 			);
 			path = CanvasApp;
 			sourceTree = "<group>";
@@ -221,6 +236,9 @@
 			files = (
 				C44D9D4A1BAFDBF0004F6DD5 /* ViewController.m in Sources */,
 				C44D9D471BAFDBF0004F6DD5 /* AppDelegate.m in Sources */,
+				C44D9D781BB0F726004F6DD5 /* MCPoint.m in Sources */,
+				C44D9D6C1BB0F162004F6DD5 /* Shape.m in Sources */,
+				C44D9D691BAFDD05004F6DD5 /* CanvasView.m in Sources */,
 				C44D9D441BAFDBF0004F6DD5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

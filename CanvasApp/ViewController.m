@@ -16,7 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [[self view] setBackgroundColor:[UIColor whiteColor]];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CanvasView *canvasView = [[CanvasView alloc] initWithFrame:CGRectMake(0, 20, screenRect.size.width, screenRect.size.height - 80)];
+    NSLog(@"addSubView");
+    [[self view] addSubview:canvasView];
 }
 
 - (void)didReceiveMemoryWarning {
