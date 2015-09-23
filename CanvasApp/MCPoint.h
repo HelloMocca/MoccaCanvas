@@ -12,7 +12,10 @@
 
 @property (nonatomic, readonly) float x;
 @property (nonatomic, readonly) float y;
+@property (nonatomic, readonly) bool  isBeganPoint;
 
--(instancetype)initWithCGPoint:(CGPoint) cgPoint;
+- (instancetype)initWithCGPoint:(CGPoint) cgPoint;
+
+- (void)setIsBeganPoint:(bool)_isBeganPoint;
 
 @end

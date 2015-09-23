@@ -1,5 +1,5 @@
 //
-//  Shape.h
+//  MCShape.h
 //  CanvasApp
 //
 //  Created by mocca on 2015. 9. 22..
@@ -9,14 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "MCPoint.h"
 
-@interface Shape : NSObject
+@interface MCShape : NSObject
 
 @property (nonatomic, readonly) NSMutableArray* mcPoints;
 
--(instancetype)initWithCGPoint:(CGPoint) cgPoint;
+- (instancetype)initWithMCPoint:(MCPoint *) mcPoint;
 
--(void)addMcPointsFromCGPoint:(CGPoint) cgPoint;
-
--(int)shapeSize;
+- (int)shapeSize;
 
 @end

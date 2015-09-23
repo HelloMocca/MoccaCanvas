@@ -10,21 +10,32 @@
 
 @implementation MCPoint
 
+#pragma mark property
 {
+    //public
     float x;
     float y;
+    bool  isBeganPoint;
 }
 
 @synthesize x = x;
 @synthesize y = y;
+@synthesize isBeganPoint = isBeganPoint;
 
--(instancetype)initWithCGPoint:(CGPoint)cgPoint {
+
+#pragma mark Initailze method
+- (instancetype)initWithCGPoint:(CGPoint)cgPoint {
     self = [super init];
     if (self) {
         x = cgPoint.x;
         y = cgPoint.y;
     }
     return self;
+}
+
+#pragma mark Property control method
+- (void)setIsBeganPoint:(bool)_isBeganPoint {
+    isBeganPoint = _isBeganPoint;
 }
 
 @end

@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MCCanvas.h"
+#import "MCPointTransferProtocol.h"
 
 @interface CanvasView : UIView
 
-@property (nonatomic, readonly) NSMutableArray *points;
+@property (nonatomic, weak) id<MCPointTransferProtocol> pointTransferDelegate;
+
+-(instancetype)initWithFrame:(CGRect)frame;
+
+-(void)clear;
+
+-(void)receiveMCPoint:(MCPoint *)mcPoint;
 
 @end

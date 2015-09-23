@@ -7,49 +7,43 @@
 //
 
 #import "CanvasView.h"
-#import "Shape.h"
+#import "MCShape.h"
 
 @implementation CanvasView
 
 {
-    CGPoint prevPoint;
-    CGPoint point;
-    NSMutableArray* shapes;
-    Shape* tempShape;
+    //private
+    NSMutableArray *shapes;
+    MCShape *newShape;
+    MCShape *lastShape;
 }
 
--(instancetype)initWithFrame:(CGRect)frame {
+@synthesize pointTransferDelegate = pointTransferDelegate;
+
+#pragma mark Initialize method
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         shapes = [[NSMutableArray alloc] init];
         [self setBackgroundColor:[UIColor colorWithRed:250.0f/255.0f green:244.0f/255.0f blue:192.0f/255.0f alpha:1.0f]];
     }
-    NSLog(@"initView");
     return self;
 }
 
--(void)drawRect:(CGRect)rect {
+#pragma mark Rendering method
+- (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [[UIColor blackColor] CGColor]);
     int shapeCount = (int)[shapes count];
-    MCPoint* currentPoint;
     int i;
     for (i = 0; i < shapeCount; i++) {
         [self drawShape:[shapes objectAtIndex:i] withContext:context];
     }
-    CGContextBeginPath(context);
-    int tmpShapeSize = (int)[tempShape shapeSize];
-    for (i = 0; i < tmpShapeSize; i++) {
-        currentPoint = [[tempShape mcPoints] objectAtIndex:i];
-        if (i == 0) CGContextMoveToPoint(context, currentPoint.x, currentPoint.y);
-        CGContextAddLineToPoint(context, currentPoint.x, currentPoint.y);
-    }
-    CGContextStrokePath(context);
 }
 
--(void)drawShape:(Shape *)shape withContext:(CGContextRef)context {
+- (void)drawShape:(MCShape *)shape withContext:(CGContextRef)context {
     int shapeSize = [shape shapeSize];
-    MCPoint* currentPoint;
+    MCPoint *currentPoint;
     int i;
     CGContextBeginPath(context);
     for (i = 0; i < shapeSize; i++) {
@@ -60,19 +54,37 @@
     CGContextStrokePath(context);
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    tempShape = [[Shape alloc] initWithCGPoint:[[touches anyObject] locationInView:self]];
-}
-
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    point = [touch locationInView:self];
-    [tempShape addMcPointsFromCGPoint:point];
+#pragma mark Property control method
+- (void)clear {
+    shapes = nil;
+    shapes = [[NSMutableArray alloc] init];
     [self setNeedsDisplay];
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [shapes addObject:tempShape];
+- (void)receiveMCPoint:(MCPoint *)mcPoint {
+    if ([mcPoint isBeganPoint]) {
+        newShape = [[MCShape alloc] initWithMCPoint:mcPoint];
+        [shapes addObject:newShape];
+    } else {
+        lastShape = [shapes lastObject];
+        [[lastShape mcPoints] addObject:mcPoint];
+    }
+    [self setNeedsDisplay];
 }
 
+#pragma mark Event method
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self];
+    MCPoint *mcPoint = [[MCPoint alloc] initWithCGPoint:point];
+    [mcPoint setIsBeganPoint:true];
+    [pointTransferDelegate sendMCPoint:mcPoint from:[self class]];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self];
+    MCPoint *mcPoint = [[MCPoint alloc] initWithCGPoint:point];
+    [pointTransferDelegate sendMCPoint:mcPoint from:[self class]];
+}
 @end

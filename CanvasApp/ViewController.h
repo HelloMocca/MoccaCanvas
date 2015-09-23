@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CanvasView.h"
+#import "MCPointTransferProtocol.h"
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController <MCPointTransferProtocol>
 
 @end
 
