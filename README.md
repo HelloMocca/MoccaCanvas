@@ -2,6 +2,11 @@
 Quartz 2D를 활용한 iOS 용 캔버스 앱.  
   
 ## Version  
+__0.2.2__  
+  * Play중에는 Play버튼이 재동작하지 않는다.  
+  * MCShape 객체는 enumerateIndex를 가지고 next메서드를 통해 MCPoint의 배열인 mcPoints를 나열할 수 있다. 
+  * 마지막 MCPoint가 반환되면 nil을 반환하고 enumerateIndex는 0으로 초기화되며 다음 호출시 처음부터 다시 나열한다.  
+
 __0.2.1__
   * Play중에 그릴수 없도록 MCCanvas에서 isPlayMode로 확인
 
