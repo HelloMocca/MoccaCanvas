@@ -13,6 +13,7 @@
 @interface MCCanvas : NSObject
 
 @property (nonatomic, readwrite) bool isRecordMode;
+@property (nonatomic, readwrite) bool isPlayMode;
 @property (nonatomic, weak) id<MCPointTransferProtocol> pointTransferDelegate;
 
 - (void)recieveMCPoint:(MCPoint *)mcPoint;

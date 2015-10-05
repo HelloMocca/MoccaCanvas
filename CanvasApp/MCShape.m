@@ -12,7 +12,6 @@
 
 #pragma mark property
 {
-    //public
     NSMutableArray* mcPoints;
 }
 

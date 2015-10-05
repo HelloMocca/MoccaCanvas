@@ -14,8 +14,6 @@
 @property (nonatomic, readonly) float y;
 @property (nonatomic, readonly) bool  isBeganPoint;
 
-- (instancetype)initWithCGPoint:(CGPoint) cgPoint;
-
-- (void)setIsBeganPoint:(bool)_isBeganPoint;
+- (instancetype)initWithCGPoint:(CGPoint) cgPoint beganPoint:(bool) beganPoint;
 
 @end

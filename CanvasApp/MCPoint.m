@@ -24,11 +24,12 @@
 
 
 #pragma mark Initailze method
-- (instancetype)initWithCGPoint:(CGPoint)cgPoint {
+- (instancetype)initWithCGPoint:(CGPoint)cgPoint beganPoint:(bool)aBeganPoint{
     self = [super init];
     if (self) {
         x = cgPoint.x;
         y = cgPoint.y;
+        isBeganPoint = aBeganPoint;
     }
     return self;
 }

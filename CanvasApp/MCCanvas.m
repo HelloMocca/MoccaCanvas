@@ -12,19 +12,18 @@
 
 #pragma mark property
 {
-    //public
-    bool           isRecordMode;
-    
-    //private
     NSMutableArray *shapes;
+    bool           isRecordMode;
+    bool           isPlayMode;
     MCShape        *newShape;
     MCShape        *lastShape;
     NSTimer        *timer;
-    int currentShapeIndex;
+    int            currentShapeIndex;
     int currentPointIndex;
 }
 
 @synthesize isRecordMode = isRecordMode;
+@synthesize isPlayMode = isPlayMode;
 @synthesize pointTransferDelegate = pointTransferDelegate;
 
 - (instancetype)init {
@@ -32,6 +31,7 @@
     if (self) {
         shapes = [[NSMutableArray alloc] init];
         isRecordMode = false;
+        isPlayMode = false;
         timer = nil;
     }
     return self;
@@ -39,6 +39,7 @@
 
 - (void)play {
     if (timer != nil) return;
+    isPlayMode = true;
     currentShapeIndex = 0;
     currentPointIndex = 0;
     timer = [NSTimer scheduledTimerWithTimeInterval:.025 target:self selector:@selector(sendNextMCPoint) userInfo:nil repeats:"YES"];
@@ -53,6 +54,7 @@
     if (currentShapeIndex >= [shapes count]) {
         [timer invalidate];
         timer = nil;
+        isPlayMode = false;
         return;
     }
     MCShape *currShape = [shapes objectAtIndex:currentShapeIndex];
@@ -67,6 +69,7 @@
 }
 
 - (void)recieveMCPoint:(MCPoint *)mcPoint {
+    if (isPlayMode) return;
     if (isRecordMode) {
         [self recordMCpoint:mcPoint];
     }

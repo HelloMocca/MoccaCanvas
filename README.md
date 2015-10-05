@@ -2,6 +2,9 @@
 Quartz 2D를 활용한 iOS 용 캔버스 앱.  
   
 ## Version  
+__0.2.1__
+  * Play중에 그릴수 없도록 MCCanvas에서 isPlayMode로 확인
+
 __0.2.0__
   * 레코딩 기능추가 (화면에 그린것을 다시 재생)
   * View와 Model의 분리

@@ -76,15 +76,14 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
-    MCPoint *mcPoint = [[MCPoint alloc] initWithCGPoint:point];
-    [mcPoint setIsBeganPoint:true];
+    MCPoint *mcPoint = [[MCPoint alloc] initWithCGPoint:point beganPoint:true];
     [pointTransferDelegate sendMCPoint:mcPoint from:[self class]];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
-    MCPoint *mcPoint = [[MCPoint alloc] initWithCGPoint:point];
+    MCPoint *mcPoint = [[MCPoint alloc] initWithCGPoint:point beganPoint:false];
     [pointTransferDelegate sendMCPoint:mcPoint from:[self class]];
 }
 @end
