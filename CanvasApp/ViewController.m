@@ -51,12 +51,12 @@
 #pragma mark Event method
 - (IBAction)recordCanvas:(id)sender {
     if ([mcCanvas isRecordMode]) {
-        [mcCanvas setIsRecordMode:false];
+        [mcCanvas record];
         [recordBtn setTitle:@"RECORD" forState:UIControlStateNormal];
         [recordBtn setBackgroundColor:[UIColor darkGrayColor]];
         [playBtn setBackgroundColor:[UIColor darkGrayColor]];
     } else {
-        [mcCanvas setIsRecordMode:true];
+        [mcCanvas record];
         [canvasView clear];
         [mcCanvas clear];
         [recordBtn setTitle:@"STOP" forState:UIControlStateNormal];
@@ -66,7 +66,7 @@
 }
 
 - (IBAction)playCanvas:(id)sender {
-    if ([mcCanvas isRecordMode]) return;
+    if ([mcCanvas isRecordMode] && [mcCanvas isPlayMode]) return;
     [canvasView clear];
     [mcCanvas play];
 }

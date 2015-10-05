@@ -13,23 +13,46 @@
 #pragma mark property
 {
     NSMutableArray* mcPoints;
+    NSUInteger      enumerateIndex;
 }
 
-@synthesize mcPoints = mcPoints;
-
 #pragma mark Initialize method
-- (instancetype)initWithMCPoint:(MCPoint *) mcPoint {
+- (instancetype)initWithMCPoint:(MCPoint *)mcPoint {
     self = [super init];
     if (self) {
         mcPoints = [[NSMutableArray alloc] init];
         [mcPoints addObject:mcPoint]; //retain
+        enumerateIndex = 0;
     }
     return self;
 }
 
 #pragma mark Property control method
-- (int)shapeSize{
+- (void)addMCPoint:(MCPoint *)mcPoint {
+    [mcPoints addObject:mcPoint];
+}
+
+- (MCPoint *)mcPointAtIndex:(NSUInteger)index {
+    return [mcPoints objectAtIndex:index];
+}
+
+- (int)count{
     return (int)[mcPoints count];
+}
+
+#pragma mark Enumerate
+- (void)enumerateInit {
+    enumerateIndex = 0;
+}
+
+- (id)next {
+    if (enumerateIndex >= [self count]) {
+        enumerateIndex = 0;
+        return nil;
+    }
+    MCPoint *mcPoint = [mcPoints objectAtIndex:enumerateIndex];
+    enumerateIndex++;
+    return mcPoint;
 }
 
 @end

@@ -12,7 +12,6 @@
 
 #pragma mark property
 {
-    //public
     float x;
     float y;
     bool  isBeganPoint;
@@ -24,7 +23,7 @@
 
 
 #pragma mark Initailze method
-- (instancetype)initWithCGPoint:(CGPoint)cgPoint beganPoint:(bool)aBeganPoint{
+- (instancetype)initWithCGPoint:(CGPoint) cgPoint beganPoint:(bool)aBeganPoint{
     self = [super init];
     if (self) {
         x = cgPoint.x;
@@ -32,11 +31,6 @@
         isBeganPoint = aBeganPoint;
     }
     return self;
-}
-
-#pragma mark Property control method
-- (void)setIsBeganPoint:(bool)_isBeganPoint {
-    isBeganPoint = _isBeganPoint;
 }
 
 @end

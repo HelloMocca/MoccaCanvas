@@ -444,6 +444,7 @@
 				C44D9D631BAFDBF0004F6DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C44D9D641BAFDBF0004F6DD5 /* Build configuration list for PBXNativeTarget "CanvasAppTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +453,7 @@
 				C44D9D661BAFDBF0004F6DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

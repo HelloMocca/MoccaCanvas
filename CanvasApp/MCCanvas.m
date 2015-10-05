@@ -10,7 +10,6 @@
 
 @implementation MCCanvas
 
-#pragma mark property
 {
     NSMutableArray *shapes;
     bool           isRecordMode;
@@ -19,7 +18,6 @@
     MCShape        *lastShape;
     NSTimer        *timer;
     int            currentShapeIndex;
-    int currentPointIndex;
 }
 
 @synthesize isRecordMode = isRecordMode;
@@ -41,8 +39,17 @@
     if (timer != nil) return;
     isPlayMode = true;
     currentShapeIndex = 0;
-    currentPointIndex = 0;
     timer = [NSTimer scheduledTimerWithTimeInterval:.025 target:self selector:@selector(sendNextMCPoint) userInfo:nil repeats:"YES"];
+}
+
+- (void)stop {
+    [timer invalidate];
+    timer = nil;
+    isPlayMode = false;
+}
+
+- (void)record {
+    isRecordMode = !isRecordMode;
 }
 
 - (void)clear {
@@ -52,20 +59,16 @@
 
 - (void)sendNextMCPoint {
     if (currentShapeIndex >= [shapes count]) {
-        [timer invalidate];
-        timer = nil;
-        isPlayMode = false;
+        [self stop];
         return;
     }
     MCShape *currShape = [shapes objectAtIndex:currentShapeIndex];
-    if (currentPointIndex >= [currShape shapeSize]) {
-        currentPointIndex = 0;
+    MCPoint *currPoint = [currShape next];
+    if (currPoint == nil) {
         currentShapeIndex++;
         return;
     }
-    MCPoint *currPoint = [[currShape mcPoints] objectAtIndex:currentPointIndex];
     [self sendMCPoint:currPoint];
-    currentPointIndex++;
 }
 
 - (void)recieveMCPoint:(MCPoint *)mcPoint {
@@ -82,7 +85,7 @@
         [shapes addObject:newShape];
     } else {
         lastShape = [shapes lastObject];
-        [[lastShape mcPoints] addObject:mcPoint];
+        [lastShape addMCPoint:mcPoint];
     }
 }
 

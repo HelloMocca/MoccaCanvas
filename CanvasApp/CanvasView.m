@@ -42,12 +42,12 @@
 }
 
 - (void)drawShape:(MCShape *)shape withContext:(CGContextRef)context {
-    int shapeSize = [shape shapeSize];
+    int shapeSize = [shape count];
     MCPoint *currentPoint;
     int i;
     CGContextBeginPath(context);
     for (i = 0; i < shapeSize; i++) {
-        currentPoint = [[shape mcPoints] objectAtIndex:i];
+        currentPoint = [shape mcPointAtIndex:i];
         if (i == 0) CGContextMoveToPoint(context, currentPoint.x, currentPoint.y);
         CGContextAddLineToPoint(context, currentPoint.x, currentPoint.y);
     }
@@ -67,7 +67,7 @@
         [shapes addObject:newShape];
     } else {
         lastShape = [shapes lastObject];
-        [[lastShape mcPoints] addObject:mcPoint];
+        [lastShape addMCPoint:mcPoint];
     }
     [self setNeedsDisplay];
 }

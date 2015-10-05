@@ -11,10 +11,16 @@
 
 @interface MCShape : NSObject
 
-@property (nonatomic, readonly) NSMutableArray* mcPoints;
+- (instancetype)initWithMCPoint:(MCPoint *)mcPoint;
 
-- (instancetype)initWithMCPoint:(MCPoint *) mcPoint;
+- (void)addMCPoint:(MCPoint *)mcPoint;
 
-- (int)shapeSize;
+- (MCPoint *)mcPointAtIndex:(NSUInteger)index;
+
+- (int)count;
+
+- (void)enumerateInit;
+
+- (id)next;
 
 @end
